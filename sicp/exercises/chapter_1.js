@@ -12,7 +12,7 @@ export const __t =
  * Declare a function that takes three numbers as arguments and returns the sum of the squares
  * of the two larger numbers.
  */
-const square = (x) => Math.pow(x, 2);
+const square = (x) => x ** 2;
 const abs = Math.abs;
 const average = (x, y) => (x + y) / 2;
 
@@ -209,17 +209,27 @@ export function fib_iter(a, b, n) {
 
 export function count_change(amount) {
 	function first_denomination(n) {
-		return n === 1
-			? 1
-			: n === 2
-				? 5
-				: n === 3
-					? 10
-					: n === 4
-						? 25
-						: n === 5
-							? 50
-							: 0;
+		if (n === 1) {
+			return 1;
+		}
+
+		if (n === 2) {
+			return 5;
+		}
+
+		if (n === 3) {
+			return 10;
+		}
+
+		if (n === 4) {
+			return 25;
+		}
+
+		if (n === 5) {
+			return 50;
+		}
+
+		return 0;
 	}
 
 	function cc(amount, kinds_of_coins) {
@@ -231,8 +241,90 @@ export function count_change(amount) {
 			return 0;
 		}
 
-		return cc(amount, kinds_of_coins - 1) + cc(amount - first_denomination(kinds_of_coins), kinds_of_coins);
+		return (
+			cc(amount, kinds_of_coins - 1) +
+			cc(amount - first_denomination(kinds_of_coins), kinds_of_coins)
+		);
 	}
 
 	return cc(amount, 5);
+}
+
+// f(4)
+// n < 3 false
+// f(4 - 1) + 2 * 2 + 3 * 1
+// f(3)
+// n < 3 false
+// 2 + 1 * 2 + 3 * 1 + 2 * 2 + 3 * 1
+// f(3)  = 2 + 2 + 0
+export function f1_11_rec(n) {
+	function f(n) {
+		if (n < 3) {
+			return n;
+		}
+
+		return f(n - 1) + 2 * f(n - 2) + 3 * f(n - 3);
+	}
+
+	return f(n);
+}
+
+export function f1_11_iter(n) {
+	if (n < 3) {
+		return n;
+	}
+
+	function f_iter(a, b, c, count) {
+		let a_iter = a;
+		let b_iter = b;
+		let c_iter = c;
+
+		let count_aux = count;
+
+		while (count_aux > 0) {
+			const tmp_a = a_iter;
+			// 2 + 2 * 1 + 3 * 0
+			a_iter = tmp_a + 2 * b_iter + 3 * c_iter;
+			c_iter = b_iter;
+			b_iter = tmp_a;
+
+			--count_aux;
+		}
+
+		return a_iter;
+	}
+
+	return f_iter(2, 1, 0, n - 2);
+}
+
+// [1]
+// [1, 1]
+// [1, 2, 1]
+// [1, 3, 3, 1]
+// [1, 4, 6, 4, 1]
+// ...
+export function pascal_triangle(depth) {
+	function pascal(triangle, depth) {
+		if (depth < 2) {
+			return triangle;
+		}
+
+        // get previous row in a triangle
+		const prev = triangle[triangle.length - 1];
+        // rows start with 1
+		const cur = [1];
+
+        // calculate the middle
+		for (let i = 1; i < prev.length; ++i) {
+			cur[i] = prev[i] + prev[i - 1];
+		}
+
+        // rows end with 1
+        cur.push(1)
+		triangle.push(cur);
+
+		return pascal(triangle, depth - 1);
+	}
+
+	return pascal([[1]], depth);
 }
