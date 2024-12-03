@@ -8,7 +8,9 @@ export function BinarySearch(xs: number[], x: number) {
 
 		if (el === x) {
 			return m;
-		} else if (x < el) {
+		}
+
+		if (x < el) {
 			hi = m;
 		} else {
 			lo = m + 1;

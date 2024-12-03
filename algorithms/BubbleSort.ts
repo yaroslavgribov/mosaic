@@ -5,7 +5,7 @@ function swap(as: number[], i1: number, i2: number) {
 }
 
 export function BubbleSort(xs: number[]) {
-	for (let i = 0; i < xs.length; ++i) {
+	for (let i = 0; i < xs.length - 1; ++i) {
 		for (let j = 0; j < xs.length - 1 - i; ++j) {
 			if (xs[j] > xs[j + 1]) swap(xs, j, j + 1);
 		}
