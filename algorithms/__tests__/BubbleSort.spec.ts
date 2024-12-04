@@ -1,18 +1,7 @@
 import { expect, test } from "vitest";
 import { BubbleSort } from "../BubbleSort";
 import { bubble_while } from "../bubble_while";
-
-function sorted(xs: number[]) {
-	let s = true;
-
-	xs.slice(0, xs.length).forEach((x, index) => {
-		if (x > xs[index + 1]) {
-			s = false;
-		}
-	});
-
-	return s;
-}
+import { sorted } from './test-utils'
 
 test("BubbleSort", () => {
 	expect(sorted(bubble_while([1, 2, 3, 4]))).toBe(true);
