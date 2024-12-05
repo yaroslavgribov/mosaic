@@ -1,4 +1,4 @@
-export function BinarySearch(xs: number[], x: number) {
+export function binary_search(xs: number[], x: number) {
 	let lo = 0;
 	let hi = xs.length;
 
