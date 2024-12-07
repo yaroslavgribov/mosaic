@@ -13,7 +13,6 @@ stringToMatrix : String -> Matrix
 stringToMatrix input =
     input
         |> String.lines
-        -- Convert each line into a list of tuples with coordinates and values
         |> List.indexedMap (\y line ->
             String.toList line
                 |> List.indexedMap (\x char ->
