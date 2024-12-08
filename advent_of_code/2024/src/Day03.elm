@@ -1,4 +1,4 @@
-module MullItOver exposing (main)
+module Day03 exposing (main)
 
 import Html
 import Puzzle03

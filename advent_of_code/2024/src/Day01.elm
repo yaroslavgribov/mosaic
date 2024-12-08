@@ -1,4 +1,4 @@
-module Main exposing (main)
+module Day01 exposing (main)
 import Puzzle01
 import Browser
 import Html

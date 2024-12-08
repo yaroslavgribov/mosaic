@@ -1,5 +1,5 @@
 
-module UnsafeReports exposing (main)
+module Day02 exposing (main)
 import Puzzle02
 import Browser
 import Html

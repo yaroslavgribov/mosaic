@@ -1,4 +1,4 @@
-module CeresSearch exposing (main)
+module Day04 exposing (main)
 import Dict exposing (Dict)
 import Html
 import Puzzle04
