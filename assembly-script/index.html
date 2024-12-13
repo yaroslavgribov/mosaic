@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+      background-color: #f0f0f0;
+      margin-bottom: 24px;
+    }
+
+    .bar {
+      width: 100px;
+      height: 20px;
+      background-color: #3498db;
+      animation: rotate 2s linear infinite;
+      transform-origin: center;
+    }
+
+    @keyframes rotate {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
+    .button {
+        padding: 20px;
+        font-size: 24px;
+        margin: 12px;
+    }
+  </style>
+<script type="module">
+import { add } from "./build/release.js";
+
+console.log(add(68 + 1))
+console.log(68 + 1)
+
+</script>
+</head>
+<body>
+    <div class="container">
+        <div id="rotatingBar" class="bar"></div>
+    </div>
+
+</body>
+</html>
